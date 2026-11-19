@@ -182,7 +182,6 @@ def _is_deepseek_endpoint(base_url: str | None) -> bool:
         return False
 
 
-_TRUTHY_ENV_VALUES = {"1", "true", "yes", "on"}
 _FALSEY_ENV_VALUES = {"0", "false", "no", "off"}
 
 # OpenRouter app attribution (issue #339). Default values are the single source
@@ -192,10 +191,6 @@ _FALSEY_ENV_VALUES = {"0", "false", "no", "off"}
 # request (server-side limit) and silently ignores the rest, so the sent list is
 # capped to this many below. https://openrouter.ai/docs/app-attribution
 _OPENROUTER_MAX_CATEGORIES_PER_REQUEST = 2
-
-
-def _env_flag_enabled(name: str) -> bool:
-    return os.environ.get(name, "").strip().lower() in _TRUTHY_ENV_VALUES
 
 
 def _env_flag_disabled(name: str) -> bool:
